@@ -6,6 +6,13 @@ app.options('*',cors());
 const db = require('./db');
 require('dotenv').config();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swaggerConfig');
+
+// Serve the Swagger docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
 const api = process.env.API_URL;
 
 // set the response to json format
