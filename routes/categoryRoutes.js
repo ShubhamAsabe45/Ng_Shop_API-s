@@ -98,7 +98,7 @@ router.get('/:id', async (req, res) => {
  *       500:
  *         description: Internal server error
  */
-router.post('/', jwtAuthMiddleware, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const data = req.body; // Assuming request body contains the category data
         const newCategory = new categoryModel(data);
@@ -135,7 +135,7 @@ router.post('/', jwtAuthMiddleware, async (req, res) => {
  *       404:
  *         description: Category not found
  */
-router.put('/', jwtAuthMiddleware, async (req, res) => {
+router.put('/', async (req, res) => {
     try {
         const categoryId = req.headers['id']; // Extract the id from the request headers
         if (!categoryId) {
@@ -181,7 +181,7 @@ router.put('/', jwtAuthMiddleware, async (req, res) => {
  *       404:
  *         description: Category not found
  */
-router.delete('/', jwtAuthMiddleware, async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
         const categoryId = req.headers['id']; // Extract the id from the request headers
         if (!categoryId) {
